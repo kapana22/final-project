@@ -1,38 +1,41 @@
-<div class="product-container">
+@if (product$ | async; as prod) {
+  <div class="product-container">
     <div class="product-image">
-      <img [src]="product?.thumbnail" alt="Product Photo" />
+      <img [src]="prod.thumbnail" alt="Product Photo" />
     </div>
     <div class="product-detail">
       <div class="product-title">
-        <h2 class="title">{{ product?.title }}</h2>
+        <h2 class="title">{{ prod.title }}</h2>
         <div class="brand">
-          <span class="brand-title">{{ product?.brand }}</span>
-          <span class="code">{{ product?._id }}</span>
+          <span class="brand-title">{{ prod.brand }}</span>
+          <span class="code">{{ prod._id }}</span>
         </div>
       </div>
       <div class="description">
         <p class="description-title">Description</p>
-        <p class="description-value">{{ product?.description }}</p>
+        <p class="description-value">{{ prod.description }}</p>
       </div>
       <div class="details">
         <p class="detail-title">Issue Date</p>
-        <p class="detail-value">{{ product?.issueDate | date }}</p>
+        <p class="detail-value">{{ prod.issueDate | date }}</p>
         <p class="detail-title">Stock</p>
-        <p class="detail-value">{{ product?.stock }}</p>
+        <p class="detail-value">{{ prod.stock }}</p>
       </div>
       <div class="price">
         <div class="price-detail">
           <div class="price-now">
-            <span class="price-current">{{ product?.price?.current }}</span>
-            <span class="price-currency">{{ product?.price?.currency }}</span>
+            <span class="price-current">{{ prod.price.current }}</span>
+            <span class="price-currency">{{ prod.price.currency }}</span>
           </div>
           <span class="price-before">
-            {{ product?.price?.beforeDiscount }} {{ product?.price?.currency }}
+            {{ prod.price.beforeDiscount }} {{ prod.price.currency }}
           </span>
-          <span class="discount">{{ product?.price?.discountPercentage }}%</span>
+          <span class="discount">{{ prod.price.discountPercentage }}%</span>
         </div>
-        <button class="btn btn-primary"><i class="bi bi-cart"></i> Add to Cart</button>
+        <button (click)="addtoCart(prod._id)" class="btn btn-primary">
+          <i class="bi bi-cart"></i> Add to Cart
+        </button>
       </div>
     </div>
   </div>
-  
+}

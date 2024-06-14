@@ -1,3 +1,5 @@
+import { ProductDetails } from './product';
+
 export interface Cart {
   _id: string;
   userId: string;
@@ -14,7 +16,7 @@ export interface Cart {
 }
 
 export interface CartProduct {
-  details: import("c:/Users/LukaKapanadze(200478/Desktop/ShopingWeb1-main/src/app/shared/types/product").ProductDetails;
+  details: ProductDetails;
   quantity: number;
   pricePerQuantity: number;
   beforeDiscountPrice: number;

@@ -10,11 +10,11 @@
         <div class="card_item">
   
           <div class="product_img">
-            <img [src]="product.details?.thumbnail" alt="" />
+            <img [src]="product.details.thumbnail" alt="" />
           </div>
           <div class="product_info">
-            <h1>{{ product.details?.title }}</h1>
-            <p>{{ product.details?.description }}</p>
+            <h1>{{ product.details.title }}</h1>
+            <p>{{ product.details.description }}</p>
             <div class="close-btn" (click)="onDeleteProduct(product.productId)">
               <i class="fa-solid fa-x"></i>
             </div>

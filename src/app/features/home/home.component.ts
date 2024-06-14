@@ -18,7 +18,8 @@ type Direction = 'asc' | 'desc';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule,
+  imports: [
+    FormsModule,
     CommonModule,
     ProductCardComponent,
     FormsModule,
@@ -32,6 +33,7 @@ type Direction = 'asc' | 'desc';
 export class HomeComponent implements OnInit {
   readonly cartService = inject(CartService);
   onAddToCart(id: string) {
+    console.log('test');
     this.cartService.addToCart(id, 1);
   }
 

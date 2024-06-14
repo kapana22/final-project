@@ -11,9 +11,6 @@ import { jwtDecode } from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  validateLogin() {
-    throw new Error('Method not implemented.');
-  }
   private readonly env = inject(ENVIRONMENT);
   private readonly httpClient = inject(HttpClient);
   private readonly router = inject(Router);

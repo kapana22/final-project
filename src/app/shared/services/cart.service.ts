@@ -27,21 +27,20 @@ export class CartService {
   getCart() {
     this.httpClient
       .get<Cart>(this.baseUrl, { headers: this.authHeaders })
-      .pipe(catchError(() => {
-        this.cart$.next(null);
-        return EMPTY
-      }))
+      .pipe(
+        catchError(() => {
+          this.cart$.next(null);
+          return EMPTY;
+        }),
+      )
       .subscribe((cart) => {
-        if(cart != null)
-          this.isInitialized = true;
+        if (cart != null) this.isInitialized = true;
         this.cart$.next(cart);
       });
   }
 
   addToCart(id: string, quantity: number) {
-    this.authService.validateLogin();
-    if(!this.isInitialized)
-      this.getCart();
+    if (!this.isInitialized) this.getCart();
 
     if (this.cart$.value) {
       this.httpClient
@@ -52,7 +51,7 @@ export class CartService {
         )
         .subscribe((cart) => {
           this.cart$.next(cart);
-          this.router.navigateByUrl("/cart")
+          this.router.navigateByUrl('/cart');
         });
     } else {
       this.httpClient
@@ -61,37 +60,28 @@ export class CartService {
           { id, quantity },
           { headers: this.authHeaders },
         )
-        .pipe(catchError((e) =>
-        {
-          console.log(e);
-          return EMPTY
-        }))
         .subscribe((cart) => {
           this.cart$.next(cart);
-          this.router.navigateByUrl("/cart")
+          this.router.navigateByUrl('/cart');
         });
     }
   }
 
   removeFromCart(id: any) {
     this.httpClient
-      .delete<Cart>(
-        `${this.baseUrl}/product`,
-        {
-          headers: this.authHeaders,
-          body: { id }
-        }
-      )
+      .delete<Cart>(`${this.baseUrl}/product`, {
+        headers: this.authHeaders,
+        body: { id },
+      })
       .subscribe((r) => {
-        this.getCart()
+        this.getCart();
       });
   }
 
   checkout() {
-    this.httpClient.post(`${this.baseUrl}/checkout`,
-      {},
-      { headers: this.authHeaders })
-    .pipe(catchError(() => EMPTY))
-    .subscribe(x => this.getCart())
+    this.httpClient
+      .post(`${this.baseUrl}/checkout`, {}, { headers: this.authHeaders })
+      .pipe(catchError(() => EMPTY))
+      .subscribe((x) => this.getCart());
   }
 }
