@@ -1,0 +1,75 @@
+form {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 40px;
+}
+/* Styles for form */
+.my-form {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+}
+
+/* Style for form input labels */
+.my-form label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Style for form input fields */
+.my-form input[type="text"],
+.my-form input[type="email"],
+.my-form input[type="password"],
+.my-form input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Style for error messages */
+.my-form .text-danger {
+  color: #dc3545;
+  margin-top: 5px;
+}
+
+/* Style for submit button */
+.my-form button[type="button"],
+.my-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.my-form button[type="button"]:disabled,
+.my-form button[type="submit"]:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.my-form button[type="button"]:hover,
+.my-form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Style for links */
+.my-form a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.my-form a:hover {
+  text-decoration: underline;
+}

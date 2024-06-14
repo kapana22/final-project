@@ -1,0 +1,163 @@
+  <!-- Carousel -->
+  <div
+    id="carouselExampleControls"
+    class="carousel slide mb-4"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          src="https://alta.ge/images/promo/320/asus_rog_g14_16_web_hgvb-xx.png"
+          class="d-block w-100"
+          alt="Slide 1"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://alta.ge/images/promo/335/iphone15_web_ge1.png"
+          class="d-block w-100"
+          alt="Slide 2"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://alta.ge/images/promo/326/lg_veb_ihz4-92.png"
+          class="d-block w-100"
+          alt="Slide 3"
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://alta.ge/images/promo/333/ASUS1280x400_p91y-w5.png"
+          class="d-block w-100"
+          alt="Slide 4"
+        />
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Search and Filters -->
+  <div class="container mb-4">
+    <div class="row mb-3">
+      <div class="col-md-8 mb-2">
+        <input
+          id="searchInput"
+          class="form-control"
+          type="text"
+          placeholder="Search..."
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="applyFilters()"
+        />
+      </div>
+      <div class="col-md-4">
+        <button
+          class="btn btn-outline-primary w-100"
+          type="button"
+          (click)="applyFilters()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-4 mb-2">
+        <label for="categoryFilter" class="form-label">Filter by Category</label>
+        <select
+          id="categoryFilter"
+          class="form-select"
+          [(ngModel)]="categoryFilter"
+          (ngModelChange)="applyFilters()"
+        >
+          <option value="">All</option>
+          <option value="1">Laptops</option>
+          <option value="2">Phones</option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-2">
+        <label for="priceOrder" class="form-label">Sort by</label>
+        <select
+          id="priceOrder"
+          class="form-select"
+          [(ngModel)]="sortOrder"
+          (ngModelChange)="applyFilters()"
+        >
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="rating_desc">Rating: High to Low</option>
+          <option value="rating_asc">Rating: Low to High</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="brandFilter" class="form-label">Filter by Brand</label>
+        <select
+          id="brandFilter"
+          class="form-select"
+          [(ngModel)]="brandFilter"
+          (ngModelChange)="applyFilters()"
+        >
+          <option value="">All Brands</option>
+          <option value="samsung">Samsung</option>
+          <option value="asus">Asus</option>
+          <option value="iphone">iPhone</option>
+          <option value="lg">LG</option>
+          <option value="sony">Sony</option>
+          <option value="dell">Dell</option>
+          <option value="hp">HP</option>
+          <option value="lenovo">Lenovo</option>
+          <option value="acer">Acer</option>
+          <option value="huawei">Huawei</option>
+          <option value="xiaomi">Xiaomi</option>
+          <option value="oneplus">OnePlus</option>
+          <option value="google">Google</option>
+          <option value="nokia">Nokia</option>
+          <option value="motorola">Motorola</option>
+          <option value="oppo">Oppo</option>
+          <option value="vivo">Vivo</option>
+          <option value="realme">Realme</option>
+          <option value="honor">Honor</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  @if (products$ | async; as products) {
+    <div class="products-grid">
+      @for (product of products; track product._id) {
+        <app-product-card
+          [product]="product"
+          (addToCart)="onAddToCart($event)"
+        ></app-product-card>
+      }
+    </div>
+  }
+
+
+  @if (pagination$ | async; as pagination) {
+    <div>
+      <app-paginator
+        [pageIndex]="pagination.pageIndex"
+        [pageSize]="pagination.pageSize"
+        [total]="pagination.total"
+        (pageIndexChange)="onPaginationChange($event, pagination.pageSize)"
+        (pageSizeChange)="onPaginationChange(pagination.pageIndex, $event)"
+      ></app-paginator>
+    </div>
+  }

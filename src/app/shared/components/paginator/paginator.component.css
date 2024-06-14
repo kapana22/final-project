@@ -1,0 +1,105 @@
+/* Paginator Container */
+.paginator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 5px 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 280px;
+  margin: 10px auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.paginator:hover {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Button Styles */
+.paginator .btn {
+  padding: 3px 8px;
+  border: none;
+  border-radius: 3px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.paginator .btn:hover:not(:disabled) {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+.paginator .btn:disabled {
+  background-color: #bbbbbb;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Page Info Styles */
+.paginator p {
+  margin: 0;
+  font-size: 14px;
+  color: #495057;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Select Dropdown Styles */
+.paginator .form-select {
+  padding: 3px 5px;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  background-color: #ffffff;
+  color: #495057;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: auto;
+  min-width: 50px;
+  height: 30px;
+}
+
+.paginator .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.paginator .form-select option {
+  padding: 3px;
+  background-color: #ffffff;
+  color: #495057;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 400px) {
+  .paginator {
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+  }
+
+  .paginator p {
+    font-size: 12px;
+  }
+
+  .paginator .btn,
+  .paginator .form-select {
+    width: 100%;
+    padding: 6px;
+  }
+}

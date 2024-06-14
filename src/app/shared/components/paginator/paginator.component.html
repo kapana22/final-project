@@ -1,0 +1,29 @@
+
+
+
+<div class="paginator">
+  <button
+    class="btn btn-primary"
+    [disabled]="pageIndex <= 1"
+    (click)="previousPage(); scrollToTop()"
+  >
+    &lt;
+  </button>
+  <button
+    class="btn btn-primary"
+    [disabled]="pageIndex >= lastPage()"
+    (click)="nextPage(); scrollToTop()"
+  >
+    &gt;
+  </button>
+  <p>{{ pageIndex }} of {{ lastPage() }}</p>
+  <select
+    class="form-select"
+    [(ngModel)]="pageSize"
+    (ngModelChange)="changePageSize(); scrollToTop()"
+  >
+  @for (option of sizeOptions; track $index) {
+    <option [value]="option">{{ option }}</option>
+  }
+</select>  
+</div>

@@ -1,0 +1,15 @@
+form {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 40px;
+}
+.new-here {
+  text-align: center;
+  font-size: 18px;
+}
+
+.sign-up-link {
+  text-decoration: underline;
+  color: blue;
+  
+}

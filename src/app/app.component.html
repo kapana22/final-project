@@ -1,0 +1,62 @@
+<app-header class="bg-dark">
+  <div header-title class="navbar-brand text-light">
+    <ng-container *ngIf="user$ | async as user; else anonymousUser">
+      <a class="navbar-brand" href="#">
+        <img src="https://alta.ge/images/logos/0/alta_logo.png" alt="Alta Logo">
+      </a>
+    </ng-container>
+    <ng-template #anonymousUser>
+      <img src="https://alta.ge/images/logos/0/alta_logo.png" alt="">
+    </ng-template>
+  </div>
+
+  <form header-actions class="d-flex flex-wrap align-items-center" role="search">
+    <a class="btn btn-light mr-1" routerLink="/home" routerLinkActive="active">Home</a>
+    <a class="btn btn-light mr-1" routerLink="/about" routerLinkActive="active">About</a>
+    <a class="btn btn-light mr-1" routerLink="/services" routerLinkActive="active">Services</a>
+    <a class="btn btn-light mr-1" routerLink="/cart" routerLinkActive="active">Cart</a>
+
+    <ng-container *ngIf="user$ | async; else anonymousUserActions">
+      <button type="button" class="btn btn-dark mr-1" (click)="authService.signOut()">
+        <i class="bi bi-door-open"></i> Logout
+      </button>
+    </ng-container>
+    <ng-template #anonymousUserActions>
+      <a class="btn btn-light mr-1" routerLink="/auth" routerLinkActive="active">
+        <i class="bi bi-person"></i> Login
+      </a>
+    </ng-template>
+  </form>
+</app-header>
+
+
+
+<!-- <app-header>
+  <a header-title class="navbar-brand">logo </a>
+  <form header-actions class="d-flex" role="search">
+    <a type="button" class="btn" routerLink="/auth" routerLinkActive="active">Auth</a>
+    <a type="button" class="btn" routerLink="/home" routerLinkActive="active">Home</a>
+    <a type="button" class="btn" routerLink="/cart" routerLinkActive="active">Cart</a>
+    <input
+      class="form-control me-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+    />
+    <button class="btn btn-outline-success" type="button">Search</button>
+  </form>
+  
+</app-header> -->
+
+<div>
+
+</div>
+
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+
+
+<app-footer></app-footer>
