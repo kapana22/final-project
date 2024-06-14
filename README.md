@@ -1,3 +1,6 @@
+web https://enchanting-klepon-89fca4.netlify.app
+
+
 # Evershop
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
